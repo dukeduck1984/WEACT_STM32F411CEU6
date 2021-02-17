@@ -111,6 +111,7 @@
 #define MICROPY_BOARD_EARLY_INIT    WeAct_F411CE_board_early_init
 void WeAct_F411CE_board_early_init(void);
 
+#define MICROPY_HW_SPIFLASH_ENABLE_CACHE (1)
 extern const struct _mp_spiflash_config_t spiflash_config;
 extern struct _spi_bdev_t spi_bdev;
 #define MICROPY_HW_BDEV_IOCTL(op, arg) ( \
@@ -120,6 +121,7 @@ extern struct _spi_bdev_t spi_bdev;
 )
 #define MICROPY_HW_BDEV_READBLOCKS(dest, bl, n) spi_bdev_readblocks(&spi_bdev, (dest), (bl), (n))
 #define MICROPY_HW_BDEV_WRITEBLOCKS(src, bl, n) spi_bdev_writeblocks(&spi_bdev, (src), (bl), (n))
+#define MICROPY_HW_BDEV_SPIFLASH_EXTENDED (&spi_bdev) // for extended block protocol
 
 #endif
 
